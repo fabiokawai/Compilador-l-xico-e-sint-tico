@@ -13,8 +13,6 @@ let returnFromInput = InputOperation()
 let returnedTokens = TokenConversion(text: returnFromInput.receiveInput())
 
 let syntactitAnalysis = SyntacticAnalysis(text: returnedTokens.runConversion())
-syntactitAnalysis.testSyntactical()
-
 
 switch syntactitAnalysis.isParenthesesOK{
 case true:

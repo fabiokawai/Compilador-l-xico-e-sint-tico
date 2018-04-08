@@ -20,6 +20,7 @@ class SyntacticAnalysis{
     
     init (text:[String]){
         self.inputArray = text
+        testSyntactical()
     }
     
     func testSyntactical(){
@@ -114,7 +115,7 @@ class SyntacticAnalysis{
                     isSyntacticallyOk = false
                 }
             default:
-                print ("TOKEN \(inputArray[x]) AINDA NÃO SENDO VERIFICADO")
+                print ("⚠️\(inputArray[x])")
             }
             if (parenthesesCount<0){
                 isSyntacticallyOk = false
