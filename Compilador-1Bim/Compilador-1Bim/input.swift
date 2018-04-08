@@ -15,8 +15,7 @@ class InputOperation{
     func receiveInput() -> [Character]{
         
         print("Digite a equação a ser compilada:", terminator:" ")
-        
-        //input = "12+ 4*(3+ 9)-0i"
+
         input = readLine()!
         
         input = input.replacingOccurrences(of: " ", with: "")
