@@ -13,9 +13,10 @@ import Foundation
 class SyntacticAnalysis{
     
     var inputArray:[String]
+    var parenthesesCount = 0
     
     var isSyntacticallyOk : Bool = true
-    
+    var isParenthesesOK: Bool = true
     
     init (text:[String]){
         self.inputArray = text
@@ -82,12 +83,46 @@ class SyntacticAnalysis{
                     print ("⚠️TOK_NUM")
                     isSyntacticallyOk = false
                 }
+            case "TOK_PAR_OPEN":
+                parenthesesCount+=1
+                if (inputArray[x-1]=="TOK_OPE" || inputArray[x-1]=="TOK_SUB" || inputArray[x-1]=="TOK_PAR_OPEN" || inputArray[x-1]=="TOK_BEGIN"){
+                    if (inputArray[x+1]=="TOK_SUB" || inputArray[x+1]=="TOK_PAR_OPEN" || inputArray[x+1]=="TOK_NUM"){
+                        print ("✅TOK_PAR_OPEN")
+                    }
+                    else {
+                        print ("⚠️TOK_PAR_OPEN")
+                        isSyntacticallyOk = false
+                    }
+                }
+                else {
+                    print ("⚠️TOK_PAR_OPEN")
+                    isSyntacticallyOk = false
+                }
+            case "TOK_PAR_CLOSE":
+                parenthesesCount-=1
+                if (inputArray[x-1]=="TOK_NUM" || inputArray[x-1]=="TOK_PAR_CLOSE"){
+                    if (inputArray[x+1]=="TOK_OPE" || inputArray[x+1]=="TOK_SUB" || inputArray[x+1]=="TOK_PAR_CLOSE" || inputArray[x+1]=="TOK_END"){
+                        print ("✅TOK_PAR_CLOSE")
+                    }
+                    else {
+                        print ("⚠️TOK_PAR_CLOSE")
+                        isSyntacticallyOk = false
+                    }
+                }
+                else {
+                    print ("⚠️TOK_PAR_CLOSE")
+                    isSyntacticallyOk = false
+                }
             default:
                 print ("TOKEN \(inputArray[x]) AINDA NÃO SENDO VERIFICADO")
-            }//switch
-        }//for
-    }//func
-    
-    
-    
+            }
+            if (parenthesesCount<0){
+                isSyntacticallyOk = false
+                isParenthesesOK = false
+            }
+        }
+        if (parenthesesCount != 0 || isParenthesesOK == false){
+            isSyntacticallyOk = false
+        }
+    }
 }

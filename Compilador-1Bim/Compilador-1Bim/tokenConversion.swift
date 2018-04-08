@@ -47,13 +47,7 @@ class TokenConversion{
         }
         output.append("TOK_END")
         
-        //Resultados dos testes
-        switch isLexicallyOK{
-        case true:
-            print ("✅ Análise Léxica")
-        case false:
-            print ("⚠️ Análise Léxica")
-        }
+        
         
         return output
     }
