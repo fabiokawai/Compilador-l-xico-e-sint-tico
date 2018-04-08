@@ -16,9 +16,9 @@ let syntactitAnalysis = SyntacticAnalysis(text: returnedTokens.runConversion())
 
 switch syntactitAnalysis.isParenthesesOK{
 case true:
-    print ("\r✅ Abertura/Fechamento de parenteses\r\r")
+    print ("\r✅ Abertura/Fechamento de parenteses", terminator: "\r\r")
 case false:
-    print ("\r⚠️ Abertura/Fechamento de parenteses\r\r")
+    print ("\r⚠️ Abertura/Fechamento de parenteses", terminator: "\r\r")
 }
 
 switch returnedTokens.isLexicallyOK{
