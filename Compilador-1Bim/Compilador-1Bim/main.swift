@@ -8,15 +8,11 @@
 
 import Foundation
 
-var tokenized:[String] = []
-
 let returnFromInput = InputOperation()
 
 let returnedTokens = TokenConversion(text: returnFromInput.receiveInput())
-tokenized = returnedTokens.runConversion()
-//print("Tokenizado:\r \(tokenized)", terminator: "\r\r")
 
-let syntactitAnalysis = SyntacticAnalysis(text: tokenized)
+let syntactitAnalysis = SyntacticAnalysis(text: returnedTokens.runConversion())
 syntactitAnalysis.testSyntactical()
 
 
